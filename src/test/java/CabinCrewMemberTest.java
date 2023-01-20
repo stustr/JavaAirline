@@ -22,4 +22,11 @@ public class CabinCrewMemberTest {
         assertEquals("Cabin crew member",
                 cabinCrewMember.getRank());
     }
+
+    @Test
+    public void cabinCrewCanRelayMessage() {
+        assertEquals("hello",
+                cabinCrewMember.relayMessage("hello"));
+    }
+
 }

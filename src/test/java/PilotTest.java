@@ -9,7 +9,7 @@ public class PilotTest {
 
     @Before
     public void before() {
-        pilot = new Pilot("Foo");
+        pilot = new Pilot("Foo", "123");
     }
 
     @Test
@@ -21,4 +21,16 @@ public class PilotTest {
     public void pilotHasRank() {
         assertEquals("Pilot", pilot.getRank());
     }
+
+    @Test
+    public void pilotHasLicenceNumber() {
+        assertEquals("123", pilot.getLicenceNumber());
+    }
+
+
+    @Test
+    public void pilotCanFlyPlane() {
+        assertEquals("flying", pilot.flyPlane());
+    }
+
 }
