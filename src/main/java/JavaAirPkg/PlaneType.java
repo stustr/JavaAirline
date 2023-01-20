@@ -1,7 +1,7 @@
 package JavaAirPkg;
 
 public enum PlaneType {
-    BOEING747(416, 910),
+    BOEING747(416, 910000),
     ;
 
     private final int capacity;

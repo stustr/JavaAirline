@@ -1,6 +1,9 @@
 package JavaAirPkg;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
+import java.util.Date;
 
 public class Flight {
     private ArrayList<Pilot> pilots;
@@ -10,13 +13,14 @@ public class Flight {
     private String flightNumber;
     private String destination;
     private String departure;
-    private String departureTime;
+    private Date departureTime;
+    private ArrayList<Integer> randomisedSeats;
 
     public Flight(ArrayList<Pilot> pilots,
                   ArrayList<CabinCrewMember> cabinCrew,
                   Plane plane, String flightNumber,
                   String destination, String departure,
-                  String departureTime) {
+                  Date departureTime) {
         this.pilots = pilots;
         this.cabinCrew = cabinCrew;
         this.flightNumber = flightNumber;
@@ -25,6 +29,24 @@ public class Flight {
         this.departureTime = departureTime;
         this.passengers = new ArrayList<Passenger>();
         this.plane = plane;
+        this.randomisedSeats = randomiseSeats();
+    }
+
+    public ArrayList randomiseSeats() {
+        ArrayList temp = new ArrayList();
+
+        for (int i = 1; i < this.plane.getCapacity() + 1; i++) {
+            temp.add(i);
+        }
+
+        Collections.shuffle(temp);
+
+        return temp;
+    }
+
+
+    public ArrayList<Integer> getRandomisedSeats() {
+        return randomisedSeats;
     }
 
     public Plane getPlane() {
@@ -39,7 +61,8 @@ public class Flight {
         return passengers;
     }
 
-    public void setPassengers(ArrayList<Passenger> passengers) {
+    public void setPassengers
+            (ArrayList<Passenger> passengers) {
         this.passengers = passengers;
     }
 
@@ -47,7 +70,8 @@ public class Flight {
         return cabinCrew;
     }
 
-    public void setCabinCrew(ArrayList<CabinCrewMember> cabinCrew) {
+    public void setCabinCrew
+            (ArrayList<CabinCrewMember> cabinCrew) {
         this.cabinCrew = cabinCrew;
     }
 
@@ -70,6 +94,8 @@ public class Flight {
     public void bookAPassenger(Passenger passenger) {
         if (this.plane.getCapacity() > this.passengers.size()) {
             this.passengers.add(passenger);
+            passenger.setFlight(this.flightNumber);
+            passenger.setSeatNumber(randomisedSeats.get(passengers.indexOf(passenger)));
         }
     }
 

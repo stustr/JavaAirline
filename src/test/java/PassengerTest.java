@@ -3,6 +3,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public class PassengerTest {
     Passenger passenger;
@@ -22,6 +23,9 @@ public class PassengerTest {
         assertEquals(2, passenger.getBags());
     }
 
-
+    @Test
+    public void passengerHasFlightAttribute() {
+        assertNull(passenger.getFlight());
+    }
 
 }
