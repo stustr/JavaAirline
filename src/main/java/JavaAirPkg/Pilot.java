@@ -1,7 +1,7 @@
 package JavaAirPkg;
 
 public class Pilot extends AirlineStaff {
-    String licenceNumber;
+    private final String licenceNumber;
 
     public Pilot(String name, String licenceNumber) {
         super(name, "Pilot");

@@ -1,8 +1,8 @@
 package JavaAirPkg;
 
 public abstract class AirlineStaff {
-    String name;
-    String rank;
+    private final String name;
+    private final String rank;
 
     public AirlineStaff(String name, String rank) {
         this.name = name;

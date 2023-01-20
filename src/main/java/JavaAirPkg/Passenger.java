@@ -1,8 +1,8 @@
 package JavaAirPkg;
 
 public class Passenger {
-    String name;
-    int bags;
+    private final String name;
+    private final int bags;
 
     public Passenger(String name, int bags) {
         this.name = name;

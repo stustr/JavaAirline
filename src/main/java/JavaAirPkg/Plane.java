@@ -1,6 +1,6 @@
 package JavaAirPkg;
 public class Plane {
-    private PlaneType type;
+    private final PlaneType type;
 
     public Plane(PlaneType type) {
         this.type = type;
