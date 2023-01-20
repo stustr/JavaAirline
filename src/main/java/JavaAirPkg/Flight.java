@@ -3,9 +3,9 @@ package JavaAirPkg;
 import java.util.ArrayList;
 
 public class Flight {
-    private ArrayList pilots;
-    private ArrayList cabinCrew;
-    private ArrayList passengers;
+    private ArrayList<Pilot> pilots;
+    private ArrayList<CabinCrewMember> cabinCrew;
+    private ArrayList<Passenger> passengers;
     private Plane plane;
     private String flightNumber;
     private String destination;
@@ -35,32 +35,42 @@ public class Flight {
         this.plane = plane;
     }
 
-    public ArrayList getPassengers() {
+    public ArrayList<Passenger> getPassengers() {
         return passengers;
     }
 
-    public void setPassengers(ArrayList passengers) {
+    public void setPassengers(ArrayList<Passenger> passengers) {
         this.passengers = passengers;
     }
 
-    public ArrayList getCabinCrew() {
+    public ArrayList<CabinCrewMember> getCabinCrew() {
         return cabinCrew;
     }
 
-    public void setCabinCrew(ArrayList cabinCrew) {
+    public void setCabinCrew(ArrayList<CabinCrewMember> cabinCrew) {
         this.cabinCrew = cabinCrew;
     }
 
-    public ArrayList getPilots() {
+    public ArrayList<Pilot> getPilots() {
         return pilots;
     }
 
-    public void setPilots(ArrayList pilots) {
+    public void setPilots(ArrayList<Pilot> pilots) {
         this.pilots = pilots;
     }
 
     public PlaneType getPlaneType() {
         return this.plane.getType();
+    }
+
+    public int numberOfAvailableSeats() {
+        return this.plane.getCapacity();
+    }
+
+    public void bookAPassenger(Passenger passenger) {
+        if (this.plane.getCapacity() > this.passengers.size()) {
+            this.passengers.add(passenger);
+        }
     }
 
 }

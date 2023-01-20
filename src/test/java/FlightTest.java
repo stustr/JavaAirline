@@ -12,6 +12,8 @@ public class FlightTest {
     CabinCrewMember cabinCrewMember;
     Plane plane;
 
+    Passenger passenger;
+
     @Before
     public void before() {
         pilot = new Pilot("Foo", "123");
@@ -25,8 +27,12 @@ public class FlightTest {
 
         plane = new Plane(PlaneType.BOEING747);
 
+        passenger = new Passenger("Baz", 1);
+
         flight = new Flight(pilotList, cabinCrewMembers,
                 plane, "1", "EDI", "GLA", "12:20");
+
+        flight.bookAPassenger(passenger);
     }
 
     @Test
@@ -48,6 +54,16 @@ public class FlightTest {
     public void flightHasPlane() {
         assertEquals(PlaneType.BOEING747,
                 flight.getPlaneType());
+    }
+
+    @Test
+    public void flightCanGetFreeSeats() {
+        assertEquals(416, flight.numberOfAvailableSeats());
+    }
+
+    @Test
+    public void flightCanBook() {
+        assertEquals(1, flight.getPassengers().size());
     }
 
 
